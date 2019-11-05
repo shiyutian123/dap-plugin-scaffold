@@ -1,0 +1,321 @@
+// 此处为拖拽组件专用样式，后期考虑另起文件，import进来
+// 4-栅格模式
+.builder-target-container-md-row4 {
+    .ngx-dnd-container {
+        display: grid; // display: -ms-grid;
+        grid-auto-flow: row;
+        grid-template-columns: 25% 25% 25% 25%;
+        -ms-grid-columns: 25% 25% 25% 25%;
+    }
+}
+
+// 6-栅格模式
+.builder-target-container-md-row6 {
+    .ngx-dnd-container {
+        grid-template-columns: 16.7% 16.6% 16.6% 16.6% 16.6% 16.7%;
+        -ms-grid-columns: 16.7% 16.6% 16.6% 16.6% 16.6% 16.7%;
+    }
+}
+
+// 8-栅格模式
+.builder-target-container-md-row8 {
+    .ngx-dnd-container {
+        grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+        -ms-grid-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    }
+}
+
+// 12-栅格模式
+.builder-target-container-md-row12 {
+    .ngx-dnd-container {
+        grid-template-columns: 8.4% 8.3% 8.3% 8.3% 8.3% 8.4% 8.4% 8.3% 8.3% 8.3% 8.3% 8.4%;
+        -ms-grid-columns: 8.4% 8.3% 8.3% 8.3% 8.3% 8.4% 8.4% 8.3% 8.3% 8.3% 8.3% 8.4%;
+    }
+}
+
+.builder-target-item-span-column(@span) {
+    grid-column: span @span ;
+    -ms-grid-column-span: @span ;
+    nz-form-label {
+        width: 100px;
+    }
+    nz-form-control {
+    //    width:calc(100%-100px) !important
+    flex:1;
+    }
+}
+
+.builder-target-item-span1 {
+    .builder-target-item-span-column(1)
+}
+
+.builder-target-item-span2 {
+    .builder-target-item-span-column(2)
+}
+
+.builder-target-item-span3 {
+    .builder-target-item-span-column(3)
+}
+
+.builder-target-item-span4 {
+    .builder-target-item-span-column(4)
+}
+
+.builder-target-item-span5 {
+    .builder-target-item-span-column(5)
+}
+
+.builder-target-item-span6 {
+    .builder-target-item-span-column(6)
+}
+
+.builder-target-item-span7 {
+    .builder-target-item-span-column(7)
+}
+
+.builder-target-item-span8 {
+    .builder-target-item-span-column(8)
+}
+
+.builder-target-item-span9 {
+    .builder-target-item-span-column(9)
+}
+
+.builder-target-item-span10 {
+    .builder-target-item-span-column(10)
+}
+
+.builder-target-item-span11 {
+    .builder-target-item-span-column(11)
+}
+
+.builder-target-item-span12 {
+    .builder-target-item-span-column(12)
+}
+
+.builder-target-item-span-row(@span) {
+    grid-row: span @span ;
+    -ms-grid-row-span: @span ;
+    height: @span * 32 + 16px !important;
+}
+
+.builder-target-item-span-row1 {
+    .builder-target-item-span-row(1);
+}
+
+.builder-target-item-span-row2 {
+    .builder-target-item-span-row(2)
+}
+
+.builder-target-item-span-row3 {
+    .builder-target-item-span-row(3)
+}
+
+.builder-target-item-span-row4 {
+    .builder-target-item-span-row(4)
+}
+
+.builder-target-item-span-row5 {
+    .builder-target-item-span-row(5)
+}
+
+.builder-target-item-span-row6 {
+    .builder-target-item-span-row(6)
+}
+
+.builder-target-item-span-row7 {
+    .builder-target-item-span-row(7)
+}
+
+.builder-target-item-span-row8 {
+    .builder-target-item-span-row(8)
+}
+
+.builder-target-item-span-row9 {
+    .builder-target-item-span-row(9)
+}
+
+.builder-target-item-span-row10 {
+    .builder-target-item-span-row(10)
+}
+
+.builder-target-item-span-row11 {
+    .builder-target-item-span-row(11)
+}
+
+.builder-target-item-span-row12 {
+    .builder-target-item-span-row(12)
+}
+
+.builder-target-item-span-row-auto(@span) {
+    grid-row: span @span ;
+    -ms-grid-row-span: @span ;
+    min-height: @span * 60px;
+}
+
+.builder-target-item-span-row-auto1 {
+    .builder-target-item-span-row-auto(1)
+}
+
+.builder-target-item-span-row-auto2 {
+    .builder-target-item-span-row-auto(2)
+}
+
+.builder-target-item-span-row-auto3 {
+    .builder-target-item-span-row-auto(3)
+}
+
+.builder-target-item-span-row-auto4 {
+    .builder-target-item-span-row-auto(4)
+}
+
+.builder-target-item-span-row-auto5 {
+    .builder-target-item-span-row-auto(5)
+}
+
+.builder-target-item-span-row-auto6 {
+    .builder-target-item-span-row-auto(6)
+}
+
+.builder-target-item-span-row-auto7 {
+    .builder-target-item-span-row-auto(7)
+}
+
+.builder-target-item-span-row-auto8 {
+    .builder-target-item-span-row-auto(8)
+}
+
+.builder-target-item-span-row-auto9 {
+    .builder-target-item-span-row-auto(9)
+}
+
+.builder-target-item-span-row-auto10 {
+    .builder-target-item-span-row-auto(10)
+}
+
+.builder-target-item-span-row-auto11 {
+    .builder-target-item-span-row-auto(11)
+}
+
+.builder-target-item-span-row-auto12 {
+    .builder-target-item-span-row-auto(12)
+}
+
+.ngx-dnd-container {
+    background: #FFFFFF !important;
+    ; // background-color: rgba(255, 255, 255, 0.2);
+    // border: 2px solid @primary-color !important;
+    margin: 4px;
+    padding: 4px
+}
+
+.ngx-dnd-container.gu-empty {
+    border: 2px dotted @primary-color  !important;
+}
+
+.ngx-dnd-container:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ngx-dnd-container .ex-moved {
+    background-color: #e74c3c;
+}
+
+.ngx-dnd-container .ex-over {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.ngx-dnd-container .handle {
+    padding: 0 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: move;
+}
+
+.builder-target-root-container {
+    >.ngx-dnd-container {
+        min-height: 60px;
+    }
+}
+
+.builder-target-layout-container {
+    >.ngx-dnd-container {
+        min-height: 60px;
+    }
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;
+    /* Konqueror */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* non-prefixed version, currently
+        not supported by any browser */
+}
+
+.ngx-dnd-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 3px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #ccc !important;
+    transition: opacity 0.4s ease-in-out; // border: 1px solid lightblue;
+    display: block;
+}
+
+.ngx-dnd-item:not(.has-handle):not(.move-disabled),
+.ngx-dnd-item.has-handle [ngxdraghandle],
+.ngx-dnd-item.has-handle [ngxDragHandle] {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.ngx-dnd-item .ngx-dnd-content {
+    user-select: none;
+}
+
+// .ngx-dnd-item:hover {
+//     border: 1px solid blue; }
+.gu-mirror {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+}
+
+.gu-hide {
+    display: none !important;
+}
+
+.gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+.gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)"; // border: 2px #1890ff solid !important ;
+    filter: alpha(opacity=20);
+}
+
+.design-item-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #00000000;
+    margin: 0 4px;
+    pointer-events: visible;
+    z-index: 10;
+}

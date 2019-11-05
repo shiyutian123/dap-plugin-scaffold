@@ -1,0 +1,49 @@
+{
+  "version": "0.0.1",
+  "name": "sdmp",
+  "package": {
+    "src": {
+      "code": "./sdmp/",
+      "assets": "./sdmp/"
+    }
+  },
+  "dist": {
+    "outputName": "./dist/view.zip"
+  },
+  "dep": [
+    {
+      "name": "@angular/animations",
+      "version": "~7.1.0",
+      "env": "dependencies/devDependencies"
+    }
+  ],
+  "devRoutes": [
+    {
+      "path": "app-plan-set",
+      "loadChildren": "src/plugins/sdmp/plan-set/plan-set.module#PlanSetModule",
+      "data": {
+        "name": "计划设置"
+      }
+    },
+    {
+      "path": "app-plan-all",
+      "loadChildren": "src/plugins/sdmp/plan-all/plan-all.module#PlanAllModule",
+      "data": {
+        "name": "计划管理"
+      }
+    }
+  ],
+  "devEnv": {
+    "needSSO": false,
+    "baseDomain": "http://k8s.definesys.com:30557",
+    "ssoDomain": "http://k8s.definesys.com:30008",
+    "appInfo": {
+      "appId" : "238a7db5-c183-4580-aedb-4a2c868acdd6",
+      "appSecre" : "00970853-8269-4ef8-980f-a8bdbf0b1c88",
+      "appCode" : "sdmp",
+      "sidebarEnable": false,
+      "title": "DAP脚手架"
+    },
+    "clientId": "dapAppClient"
+  }
+}

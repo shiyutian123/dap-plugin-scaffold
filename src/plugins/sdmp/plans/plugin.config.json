@@ -1,0 +1,10 @@
+{
+    "start":"definesys-ddmp-plugin-conf",
+    "conf":{
+        "name":"",
+        "path":"",
+        "description":"",
+        "icon":""
+    },
+    "end":"true"
+}

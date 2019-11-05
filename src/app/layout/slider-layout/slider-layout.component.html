@@ -1,0 +1,195 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-17 15:23:29
+ * @LastEditTime: 2019-11-04 22:28:40
+ * @LastEditors: Devin Shi
+ -->
+<div [attr.data-theme-style]="themeColor">
+  <nz-layout>
+    <!-- 头部代码 BEGIN -->
+    <nz-header class="side-header" [ngStyle]="{'background': isDark ? 'white' : ''}">
+      <div style="cursor: pointer" (click)="returnToHome()" class="logo-span">
+        <img src="./assets/logoFull.png" class="expand-logo" />
+      </div>
+      <span style="cursor: pointer" (click)="returnToHome()" class="head-title"
+        [ngStyle]="{'color': isDark ? 'black' : 'white'}">DAP脚手架</span>
+      <span class="head-options" [ngStyle]="{'color': isDark ? 'black' : 'white'}">
+        <nz-dropdown [nzPlacement]="'bottomCenter'">
+          <div nz-dropdown style="display: flex;align-items: center;justify-content: center; cursor: pointer;height: 40px;margin-top: 9px;">
+              <div class="avatar-img" >
+                  <img [src]="userIcon" class="show-img" *ngIf="isHasIcon">
+                  <!-- <label *ngIf="!isHasIcon">{{iconName}}</label> -->
+                  <!-- <app-avatar [canComputedValue]="iconName" *ngIf="!isHasIcon" [avatarSize]="30"></app-avatar> -->
+                </div>
+                <span style="margin-right: 5px">{{currentUser?.name}}</span>
+                <i nz-icon nzType="down"></i>
+          </div>
+
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item (click)="modifyInfo()">
+              <a><i nz-icon nzType="user" nzTheme="outline" style="margin-right: 5px"></i>
+                <span>个人信息</span>
+              </a>
+            </li>
+            <li nz-menu-item>
+              <a><i nz-icon nzType="question-circle" nzTheme="outline" style="margin-right: 5px"></i>
+                <span>使用帮助</span></a>
+            </li>
+            <li nz-menu-item (click)="logout()">
+              <a><i nz-icon nzType="logout" nzTheme="outline" style="margin-right: 5px"></i>
+                <span>安全退出</span></a>
+            </li>
+          </ul>
+        </nz-dropdown>
+      </span>
+    </nz-header>
+    <!-- 头部代码 END !(appInfo && appInfo.copyright)  appInfo && appInfo.copyright-->
+    <!-- <div class="side-TYheader">
+      <i style="cursor: pointer;" (click)="showMeuns()" nz-icon type="bars" theme="outline"></i>
+    </div> -->
+
+    <nz-layout>
+      <nz-sider class="layout-side" [ngClass]="{'menuHide' : !show_meuns}" [nzCollapsible]='isCollapsible'
+        [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'md'" [nzTheme]="isDark ? 'dark' : 'light'">
+        <ul style="overflow: auto; height: calc(100vh - 48px); border-right: 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);" nz-menu [nzTheme]="isDark ? 'dark' : 'light'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+          <ng-container *ngFor="let menuItem of menuItems">
+            <li class="nav-item-level1" nz-menu-item [nzSelected]="menuItem?.path===currentPath"
+              *ngIf="!(menuItem?.isGroup || menuItem?.isSubmenu)">
+              <a (click)="navigateMenuItem(menuItem)" class="menu-item">
+                <i nz-icon [type]="menuItem.iconType" theme="outline"></i>
+                <span class="nav-text">{{menuItem.itemText}}</span>
+              </a>
+            </li>
+
+            <li class="nav-submenu-level1" nz-submenu *ngIf="menuItem?.isSubmenu">
+              <span title>
+                <i nz-icon [type]="menuItem.iconType" theme="outline"></i>
+                <span class="nav-text">{{menuItem.itemText}}</span>
+              </span>
+              <ul>
+                <ng-container *ngFor="let menuItem_1 of menuItem?.children">
+                  <li class="nav-item-level2" nz-menu-item *ngIf="!(menuItem_1?.isGroup || menuItem_1?.isSubmenu)">
+                    <a (click)="navigateMenuItem(menuItem_1)" class="menu-item">
+                      <i nz-icon [type]="menuItem_1.iconType" theme="outline"></i>
+                      <span class="nav-text">{{menuItem_1.itemText}}</span>
+                    </a>
+                  </li>
+                  <li class="nav-group-level2" nz-menu-group *ngIf="menuItem_1?.isGroup">
+                    <span title>{{menuItem_1.itemText}}</span>
+                    <ul>
+                      <ng-container *ngFor="let menuItem_2 of menuItem_1?.children">
+                        <li class="nav-item-level3" nz-menu-item>
+                          <a (click)="navigateMenuItem(menuItem_2)" class="menu-item">
+                            <i nz-icon [type]="menuItem_2.iconType" theme="outline"></i>
+                            <span class="nav-text">{{menuItem_2.itemText}}</span>
+                          </a>
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </li>
+                  <li nz-submenu class="nav-submenu-level2" *ngIf="menuItem_1?.isSubmenu">
+                    <span title>
+                      <i nz-icon [type]="menuItem_1.iconType" theme="outline"></i>
+                      <span class="nav-text">{{menuItem_1.itemText}}</span>
+                    </span>
+                    <ul>
+                      <ng-container *ngFor="let menuItem_2 of menuItem_1?.children">
+                        <li class="nav-item-level3" nz-menu-item>
+                          <a (click)="navigateMenuItem(menuItem_2)" class="menu-item">
+                            <i nz-icon [type]="menuItem_2.iconType" theme="outline"></i>
+                            <span class="nav-text">{{menuItem_2.itemText}}</span>
+                          </a>
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </li>
+                </ng-container>
+              </ul>
+            </li>
+
+            <li class="nav-group-level1" nz-menu-group *ngIf="menuItem?.isGroup">
+              <span title><i nz-icon [type]="menuItem.iconType" theme="outline"></i>
+                <span style="margin-left: 10px">{{menuItem.itemText}}</span>
+              </span>
+              <ul>
+                <ng-container *ngFor="let menuItem_1 of menuItem?.children">
+                  <li class="nav-item-level2" nz-menu-item *ngIf="!(menuItem_1?.isGroup || menuItem_1?.isSubmenu)">
+                    <a [(click)="navigateMenuItem(menuItem_1)" class="menu-item">
+                      <i nz-icon [type]="menuItem_1.iconType" theme="outline"></i>
+                      <span class="nav-text">{{menuItem_1.itemText}}</span>
+                    </a>
+                  </li>
+                  <li class="nav-group-level2" nz-menu-group *ngIf="menuItem_1?.isGroup">
+                    <span title>{{menuItem_1.itemText}}</span>
+                    <ul>
+                      <ng-container *ngFor="let menuItem_2 of menuItem_1?.children">
+                        <li class="nav-item-level3" nz-menu-item>
+                          <a (click)="navigateMenuItem(menuItem_2)" class="menu-item">
+                            <i nz-icon [type]="menuItem_2.iconType" theme="outline"></i>
+                            <span class="nav-text">{{menuItem_2.itemText}}</span>
+                          </a>
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </li>
+                  <li nz-submenu class="nav-submenu-level2" *ngIf="menuItem_1?.isSubmenu">
+                    <i nz-icon [type]="menuItem_1.iconType" theme="outline"></i>
+                    <span title>
+                      <span class="nav-text">{{menuItem_1.itemText}}</span>
+                    </span>
+                    <ul>
+                      <ng-container *ngFor="let menuItem_2 of menuItem_1?.children">
+                        <li class="nav-item-level3" nz-menu-item>
+                          <a (click)="navigateMenuItem(menuItem_2)" class="menu-item">
+                            <i nz-icon [type]="menuItem_2.iconType" theme="outline"></i>
+                            <span class="nav-text">{{menuItem_2.itemText}}</span>
+                          </a>
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </li>
+                </ng-container>
+              </ul>
+            </li>
+          </ng-container>
+        </ul>
+      </nz-sider>
+      <!-- 侧边栏代码 END -->
+      <nz-content [attr.data-theme-button]="themeColor" style="position: relative; overflow: hidden;">
+        <nz-header class="bread">
+          <i nz-icon type="appstore" theme="fill" style="margin-right: 10px;"></i>
+          <nz-breadcrumb>
+            <!-- <nz-breadcrumb-item>
+              {{nowAppName}}
+            </nz-breadcrumb-item> -->
+            <nz-breadcrumb-item>
+              {{showBread.name}}
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item *ngIf="child_num || child_num === 0">
+              {{showBread.childs[child_num].name}}
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item *ngIf="child_num2 || child_num2 === 0">
+              {{showBread.childs[child_num].childs[child_num2].name}}
+            </nz-breadcrumb-item>
+          </nz-breadcrumb>
+        </nz-header>
+        <div class="side-content"
+          [ngClass]="{'side-content': appInfo?.copyright , 'side-no-footer-content': !(appInfo?.copyright) }">
+          <!-- <reuse-tab></reuse-tab> -->
+          <router-outlet></router-outlet>
+          <div class="loading" [hidden]="!loadingConfig.showLoading">
+            <!-- <div class="loading" [hidden]="true"> -->
+            <!-- <div class="loading" [hidden]="false"> -->
+            <div class="loading-icon">
+              <nz-spin nzSimple nzSize="large" nzTip="加载中..."></nz-spin>
+              <!-- <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1570870505826" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3316" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60"><defs><style type="text/css"></style></defs><path d="M964.288 495.36A482.56 482.56 0 0 0 0 483.2a507.904 507.904 0 0 1 1015.104 12.16h-50.816z m-235.84 476.48l-29.184-59.264A474.176 474.176 0 1 0 280.064 62.08L279.232 60.416a508.032 508.032 0 0 1 449.216 911.36z m15.36-11.968a508.096 508.096 0 0 1-608.256-103.68 42.304 42.304 0 1 1 52.352-60.928l1.472-1.28a465.536 465.536 0 1 0 702.08-609.984l3.2-2.688a508.032 508.032 0 0 1-150.848 778.56z" fill="#0179FF" p-id="3317"></path></svg> -->
+              <!-- <div class="loading-text">加载中...</div> -->
+            </div>
+          </div>
+        </div>
+      </nz-content>
+    </nz-layout>
+    <nz-footer *ngIf="appInfo?.copyright" class="side-footer"> {{appInfo?.copyright}}</nz-footer>
+  </nz-layout>
+</div>
