@@ -2,11 +2,11 @@
  * @Author: Devin Shi
  * @Email: yutian.shi@definesys.com
  * @Date: 2019-11-05 11:42:51
- * @LastEditTime: 2019-11-05 14:46:15
+ * @LastEditTime: 2019-11-05 20:36:51
  * @LastEditors: Devin Shi
  * @Description:
  */
-const plugin = require('./$${PLUGIN_NAME}$$');
+const plugin = require('./__{PLUGIN_NAME}__');
 
 const PLUGIN_INDEX = plugin.PluginsIndex;
 
