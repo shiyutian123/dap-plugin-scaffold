@@ -2,7 +2,7 @@
  * @Author: Devin Shi
  * @Email: yutian.shi@definesys.com
  * @Date: 2019-11-04 08:35:32
- * @LastEditTime: 2019-11-05 08:30:44
+ * @LastEditTime: 2019-11-05 21:05:22
  * @LastEditors: Devin Shi
  * @Description:
  */
@@ -42,7 +42,20 @@ const PageRoutes: Routes = [
     {
         path: 'home',
         component: SliderLayoutComponent,
-        children: (PLUGIN_ROUTER as Array<Route>)
+        children: [{
+          "path": "app-plan-set",
+          "loadChildren": "src/plugins/sdmp/plan-set/plan-set.module#PlanSetModule",
+          "data": {
+            "name": "计划设置"
+          }
+        },
+        {
+          "path": "app-plan-all",
+          "loadChildren": "src/plugins/sdmp/plan-all/plan-all.module#PlanAllModule",
+          "data": {
+            "name": "计划管理"
+          }
+        }]
     },
     {
         path: 'redirect-login',

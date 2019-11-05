@@ -32,13 +32,9 @@
               }
             ],
             "styles": [
-              "src/styles.less",
-              "src/assets/iconfont/iconfont.css",
-              "./node_modules/cropper/dist/cropper.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/cropper/dist/cropper.js"
             ]
           },
           "configurations": {

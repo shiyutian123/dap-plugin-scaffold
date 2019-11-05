@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./build/router-replace.js && ng serve -o --port=4800"
+    "start": "node ./build/dev-replace.js && ng serve -o --port=4800"
   },
   "private": true,
   "dependencies": {
