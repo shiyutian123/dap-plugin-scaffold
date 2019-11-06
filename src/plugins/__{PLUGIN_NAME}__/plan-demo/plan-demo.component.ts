@@ -13,7 +13,7 @@ import { NzNotificationService, NzModalService, NzMessageService } from 'ng-zorr
 import { DdmpAuthService } from 'src/app/auth/ddmp-auth.service';
 
 @Component({
-    selector: 'app-plan-demo',
+    selector: 'app-plugin-plan-demo',
     templateUrl: './plan-demo.component.html',
     styleUrls: ['./plan-demo.component.less']
 })

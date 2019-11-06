@@ -15,7 +15,7 @@
   ],
   "devRoutes": [
     {
-      "path": "app-plan-demo",
+      "path": "app-plugin-plan-demo",
       "loadChildren": "src/plugins/__{PLUGIN_NAME}__/plan-demo/plan-demo.module#PlanSetModule",
       "data": {
         "name": "计划Demo"
