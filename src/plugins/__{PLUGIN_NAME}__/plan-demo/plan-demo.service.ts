@@ -2,7 +2,7 @@
  * @Author: Devin Shi
  * @Email: yutian.shi@definesys.com
  * @Date: 2019-11-05 11:42:51
- * @LastEditTime: 2019-11-06 19:47:16
+ * @LastEditTime: 2019-11-06 21:07:46
  * @LastEditors: Devin Shi
  * @Description:
  */
@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NetworkService } from 'src/app/network/network.service';
 import { DdmpAuthService } from 'src/app/auth/ddmp-auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class PlanSetService {
@@ -21,6 +22,7 @@ export class PlanSetService {
   }
 
   getPlanDemo() {
-    return this.network.get('http://k8s.definesys.com:30577/process/authProxy/getAuthorizations');
+    // 如果是调用系统内接口，可以使用 environment.baseDomain
+    return this.network.get(environment.baseDomain + '/process/authProxy/getAuthorizations');
   }
 }
