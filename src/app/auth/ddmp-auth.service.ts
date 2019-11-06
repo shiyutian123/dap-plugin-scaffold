@@ -1,8 +1,18 @@
+/*
+ * @Author: Devin Shi
+ * @Email: yutian.shi@definesys.com
+ * @Date: 2019-11-06 17:37:53
+ * @LastEditTime: 2019-11-06 19:49:24
+ * @LastEditors: Devin Shi
+ * @Description:
+ */
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { DdmpUser, DdmpToken } from './ddmp-auth.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DdmpAuthService {
 
     private user: DdmpUser ;           // 当前用户

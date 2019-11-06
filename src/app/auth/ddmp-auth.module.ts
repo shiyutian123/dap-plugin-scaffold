@@ -7,13 +7,12 @@
  */
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared.module';
-import { DdmpAuthService } from './ddmp-auth.service';
 import { DdmpAuthNavGuard, DdmpConfirmDeactivateGuard } from './ddmp-auth.guard';
 
 @NgModule({
   imports: [
       SharedModule,
   ],
-  providers: [ DdmpAuthService, DdmpAuthNavGuard, DdmpConfirmDeactivateGuard ]
+  providers: [ DdmpAuthNavGuard, DdmpConfirmDeactivateGuard ]
 })
 export class DdmpAuthModule { }
