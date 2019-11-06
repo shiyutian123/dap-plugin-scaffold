@@ -2,7 +2,7 @@
  * @Author: Devin Shi
  * @Email: yutian.shi@definesys.com
  * @Date: 2019-11-04 08:35:32
- * @LastEditTime: 2019-11-05 21:05:22
+ * @LastEditTime: 2019-11-06 17:29:04
  * @LastEditors: Devin Shi
  * @Description:
  */
@@ -20,42 +20,14 @@ const defaultRoute: Route = {
 };
 
   // __START_PLUGIN_ROUTER__ //
-    let PLUGIN_ROUTER = [
-  {
-    "path": "app-plan-set",
-    "loadChildren": "src/plugins/sdmp/plan-set/plan-set.module#PlanSetModule",
-    "data": {
-      "name": "计划设置"
-    }
-  },
-  {
-    "path": "app-plan-all",
-    "loadChildren": "src/plugins/sdmp/plan-all/plan-all.module#PlanAllModule",
-    "data": {
-      "name": "计划管理"
-    }
-  }
-]
+    let PLUGIN_ROUTER = []
     // __END_PLUGIN_ROUTER__ //
 
 const PageRoutes: Routes = [
     {
         path: 'home',
         component: SliderLayoutComponent,
-        children: [{
-          "path": "app-plan-set",
-          "loadChildren": "src/plugins/sdmp/plan-set/plan-set.module#PlanSetModule",
-          "data": {
-            "name": "计划设置"
-          }
-        },
-        {
-          "path": "app-plan-all",
-          "loadChildren": "src/plugins/sdmp/plan-all/plan-all.module#PlanAllModule",
-          "data": {
-            "name": "计划管理"
-          }
-        }]
+        children: PLUGIN_ROUTER
     },
     {
         path: 'redirect-login',

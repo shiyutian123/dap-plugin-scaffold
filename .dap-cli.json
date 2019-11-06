@@ -1,35 +1,24 @@
 {
   "version": "0.0.1",
-  "name": "sdmp",
+  "name": "__{PLUGIN_NAME}__",
   "package": {
     "src": {
-      "code": "./sdmp/",
-      "assets": "./sdmp/"
+      "code": "./__{PLUGIN_NAME}__/",
+      "assets": "./__{PLUGIN_NAME}__/"
     }
   },
   "dist": {
-    "outputName": "./dist/view.zip"
+    "outputPath": "./dist/",
+    "outputName": "view.zip"
   },
-  "dep": [
-    {
-      "name": "@angular/animations",
-      "version": "~7.1.0",
-      "env": "dependencies/devDependencies"
-    }
+  "deps": [
   ],
   "devRoutes": [
     {
-      "path": "app-plan-set",
-      "loadChildren": "src/plugins/sdmp/plan-set/plan-set.module#PlanSetModule",
+      "path": "app-plan-demo",
+      "loadChildren": "src/plugins/__{PLUGIN_NAME}__/plan-demo/plan-demo.module#PlanSetModule",
       "data": {
-        "name": "计划设置"
-      }
-    },
-    {
-      "path": "app-plan-all",
-      "loadChildren": "src/plugins/sdmp/plan-all/plan-all.module#PlanAllModule",
-      "data": {
-        "name": "计划管理"
+        "name": "计划Demo"
       }
     }
   ],
@@ -38,9 +27,9 @@
     "baseDomain": "http://k8s.definesys.com:30557",
     "ssoDomain": "http://k8s.definesys.com:30008",
     "appInfo": {
-      "appId" : "238a7db5-c183-4580-aedb-4a2c868acdd6",
-      "appSecre" : "00970853-8269-4ef8-980f-a8bdbf0b1c88",
-      "appCode" : "sdmp",
+      "appId" : "fad5aa1e-335e-45d5-8ade-ba02f02d0c94",
+      "appSecre" : "e13f61fe-6b3a-4fd1-8ff3-89b8b8e8fbc9",
+      "appCode" : "plan-demo",
       "sidebarEnable": false,
       "title": "DAP脚手架"
     },

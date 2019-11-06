@@ -2,18 +2,16 @@
  * @Author: Devin Shi
  * @Email: yutian.shi@definesys.com
  * @Date: 2019-08-06 22:06:25
- * @LastEditTime: 2019-11-04 11:19:50
+ * @LastEditTime: 2019-11-06 17:20:49
  * @LastEditors: Devin Shi
  * @Description:
  */
 import { NgModule } from '@angular/core';
 
-import { PlansModule } from './plans/plans.module';
-import { PlanSetModule } from './plan-set/plan-set.module';
-import { PlanAllModule } from './plan-all/plan-all.module';
+import { PlanSetModule } from './plan-demo/plan-demo.module';
 
 
-const CITEMODULE = [PlansModule, PlanSetModule, PlanAllModule];
+const CITEMODULE = [PlanSetModule];
 
 
 @NgModule({

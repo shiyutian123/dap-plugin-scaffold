@@ -22,12 +22,12 @@ export const environment = {
   redirectTo: 'home',
   // __START_ENV_CONFIG__ //
     
-  "needSSO": false,
+  "needSSO": true,
   "baseDomain": "http://k8s.definesys.com:30557",
   "ssoDomain": "http://k8s.definesys.com:30008",
   "appInfo": {
-    "appId": "238a7db5-c183-4580-aedb-4a2c868acdd6",
-    "appSecre": "00970853-8269-4ef8-980f-a8bdbf0b1c88",
+    "appId": "fad5aa1e-335e-45d5-8ade-ba02f02d0c94",
+    "appSecre": "e13f61fe-6b3a-4fd1-8ff3-89b8b8e8fbc9",
     "appCode": "sdmp",
     "sidebarEnable": false,
     "title": "DAP脚手架"

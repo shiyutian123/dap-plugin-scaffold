@@ -2,7 +2,7 @@
  * @Author: Devin Shi
  * @Email: yutian.shi@definesys.com
  * @Date: 2019-11-04 08:35:32
- * @LastEditTime: 2019-11-05 07:52:46
+ * @LastEditTime: 2019-11-06 17:28:56
  * @LastEditors: Devin Shi
  * @Description:
  */
@@ -37,22 +37,7 @@ export class DdmpLayoutMenuService {
      */
     setMenuItem(defaultMenus: Array<string>, menuItems: Array<SliderMenuItem>) {
     // __START_PLUGIN_ROUTER__ //
-    let PLUGIN_ROUTER = [
-  {
-    "path": "app-plan-set",
-    "loadChildren": "src/plugins/sdmp/plan-set/plan-set.module#PlanSetModule",
-    "data": {
-      "name": "计划设置"
-    }
-  },
-  {
-    "path": "app-plan-all",
-    "loadChildren": "src/plugins/sdmp/plan-all/plan-all.module#PlanAllModule",
-    "data": {
-      "name": "计划管理"
-    }
-  }
-]
+    let PLUGIN_ROUTER = []
     // __END_PLUGIN_ROUTER__ //
       if (!isArray(PLUGIN_ROUTER)) {
         PLUGIN_ROUTER = [];

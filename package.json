@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./build/dev-replace.js && ng serve -o --port=4800"
+    "start": "node ./build/dev-replace.js && ng serve -o --port=4800",
+    "package": "npx dap-cli-service package"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.1.0",
-    "@angular/cdk": "^7.1.0",
+    "@angular/cdk": "~7.3.0",
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/core": "~7.1.0",
@@ -72,8 +73,7 @@
     "typescript": "~3.1.6"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "config": {
     "commitizen": {

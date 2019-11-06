@@ -1,0 +1,118 @@
+<ng-container>
+    <div class="plansSet">
+      <div class="back">
+          <div>
+              <span class="page-tag title">{{pageTitle}}列表</span>
+            </div>
+      </div>
+      <div class="showTable">
+          <nz-table class="table" [nzSize]="'small'" #basicTable nzBordered [nzData]="planTableData"
+              [nzShowPagination]="false" [nzScroll]="{ y: 'calc(100vh - 450px)' }">
+              <thead>
+                  <tr>
+                      <th nzWidth="4%" style="min-width: 60px;">#</th>
+                      <th nzWidth="11%">日期</th>
+                      <th nzWidth="12%">班次</th>
+                      <th nzWidth="12%">工段</th>
+                      <th nzWidth="12%">班组</th>
+                      <th nzWidth="12%">计划工位</th>
+                      <th nzwidth="11%">实际工位</th>
+                      <th nzWidth="11%">实际完成日期</th>
+                      <th nzWidth="11%">执行状态</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let planItem of planTableData;let i = index;">
+                      <td>{{i + 1}}</td>
+                      <td>{{planItem.plan_date}}</td>
+                      <td>
+                          <ng-container *ngIf="planItem.exp">
+                              <!-- <ng-container [ngStyle]="{'display' : planItem.exp ? 'block' : 'none'}"> -->
+                              {{planItem.shift_name}}
+                          </ng-container>
+                          <ng-container *ngIf="!planItem.exp">
+                              <!-- <ng-container [ngStyle]="{'display' : !planItem.exp ? 'block' : 'none'}"> -->
+                              <ng-container *ngIf="!isEdit">
+                                  <!-- <ng-container [ngStyle]="{'display' : !isEdit ? 'block' : 'none'}">     -->
+                                  {{planItem.shift_name}}
+                              </ng-container>
+                              <!-- <nz-select [ngStyle]="{'display' : isEdit ? 'block' : 'none'}" nzShowSearch [nzDisabled]="!isEdit  || planItem.exp" style="width: 120px;" [(ngModel)]="planItem.shift"> -->
+                              <nz-select *ngIf="isEdit" nzShowSearch nzAllowClear [nzDisabled]="!isEdit  || planItem.exp"
+                                  style="width: 120px;" [(ngModel)]="planItem.shift">
+                                  <ng-container *ngFor="let item of userInfo.workClasses">
+                                      <nz-option [nzValue]="item.code" [nzLabel]="item.meaning"></nz-option>
+                                  </ng-container>
+                              </nz-select>
+                          </ng-container>
+                      </td>
+                      <td>
+                          <ng-container *ngIf="planItem.exp">
+                              {{planItem.workshop_section_name}}
+                          </ng-container>
+                          <ng-container *ngIf="!planItem.exp">
+                              <ng-container *ngIf="!isEdit">
+                                  {{planItem.workshop_section_name}}
+                              </ng-container>
+                              <nz-select *ngIf="isEdit" nzShowSearch nzAllowClear [nzDisabled]="!isEdit  || planItem.exp"
+                                  style="width: 120px;" [(ngModel)]="planItem.workshop_section">
+                                  <ng-container *ngFor="let item of userInfo.workSections">
+                                      <nz-option [nzValue]="item.code" [nzLabel]="item.meaning"></nz-option>
+                                  </ng-container>
+                              </nz-select>
+                          </ng-container>
+                      </td>
+                      <td>
+                          <ng-container *ngIf="planItem.exp">
+                              {{planItem.team_name}}
+                          </ng-container>
+                          <ng-container *ngIf="!planItem.exp">
+                              <ng-container *ngIf="!isEdit">
+                                  {{planItem.team_name}}
+                              </ng-container>
+                              <nz-select *ngIf="isEdit" nzShowSearch nzAllowClear [nzDisabled]="!isEdit  || planItem.exp"
+                                  style="width: 120px;" [(ngModel)]="planItem.team">
+                                  <ng-container *ngFor="let item of userInfo.classGroups">
+                                      <nz-option [nzValue]="item.code" [nzLabel]="item.meaning"></nz-option>
+                                  </ng-container>
+                              </nz-select>
+                          </ng-container>
+                      </td>
+                      <td>
+                          <ng-container *ngIf="planItem.exp">
+                              {{planItem.station}}
+                          </ng-container>
+                          <ng-container *ngIf="!planItem.exp">
+                              <ng-container *ngIf="!isEdit">
+                                  {{planItem.station}}
+                              </ng-container>
+                              <!-- <nz-select *ngIf="false && isEdit" nzShowSearch [nzDisabled]="!isEdit || planItem.exp" style="width: 120px;" [(ngModel)]="planItem.station">
+                                      <ng-container *ngFor="let item of userInfo.workcrs">
+                                              <nz-option [nzValue]="item.WORKCR_CODE" [nzLabel]="item.WORKCR_CODE"></nz-option>
+                                          </ng-container>
+                                  </nz-select> -->
+
+                              <nz-input-group *ngIf="isEdit" (click)="showModel(i)" style="width: 120px;"
+                                  [nzSuffix]="suffixIconSearch">
+                                  <input [disabled]="!isEdit || planItem.exp" type="text" nz-input placeholder="请选择工位"
+                                      [(ngModel)]="planItem.station" />
+                              </nz-input-group>
+                              <ng-template #suffixIconSearch>
+                                  <i nz-icon type="search"></i>
+                              </ng-template>
+                          </ng-container>
+                      </td>
+                      <td>{{planItem.real_station}}</td>
+                      <td>{{planItem.finish_date}}</td>
+                  </tr>
+              </tbody>
+          </nz-table>
+      </div>
+    </div>
+</ng-container>
+
+<ng-template #suffixIconButton>
+    <button nz-button nzType="primary" nzSearch (click)="query(keyWord)"><i nz-icon type="search"></i></button>
+</ng-template>
+<ng-template #totalPage>
+    共{{pageAll.pageTotal}}条
+</ng-template>
