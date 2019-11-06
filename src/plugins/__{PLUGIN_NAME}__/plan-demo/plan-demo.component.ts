@@ -2,7 +2,7 @@
  * @Author: Devin Shi
  * @Email: yutian.shi@definesys.com
  * @Date: 2019-11-05 11:42:51
- * @LastEditTime: 2019-11-06 17:22:53
+ * @LastEditTime: 2019-11-06 19:41:18
  * @LastEditors: Devin Shi
  * @Description:
  */
@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { format, getDaysInYear, addDays, isMonday, compareAsc } from 'date-fns';
 import { PlanSetService } from './plan-demo.service';
 import { NzNotificationService, NzModalService, NzMessageService } from 'ng-zorro-antd';
+import { DdmpAuthService } from 'src/app/auth/ddmp-auth.service';
 
 @Component({
     selector: 'app-plan-demo',
@@ -51,8 +52,22 @@ export class PlanSetComponent implements OnInit {
     };
     workcrsList: any = [];
     modelIndex: any;
-    constructor( private planSetService: PlanSetService,
+
+    currentUser;
+    currentToken;
+
+    constructor(
+        private ddmpAuthService: DdmpAuthService,
+        private planSetService: PlanSetService,
         private nzNotificationService: NzNotificationService) {
+
+      this.currentUser = this.ddmpAuthService.currentUser ;
+      this.currentToken = this.ddmpAuthService.currentToken ;
+      this.planSetService.getPlanDemo().subscribe((res) => {
+        if (res.code === 'ok') {
+          this.planTableData = res.table ;
+        }
+      });
 
     }
     ngOnInit() {
